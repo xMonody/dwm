@@ -1,14 +1,37 @@
 #!/bin/sh
 
 compton &
-feh --bg-scale ~/.bin.jpg
+feh --bg-scale ~/.go/ico/xiao.jpg
+dwm_cpu()
+{
+    CPU=$(sar -u 1 1 | grep Average | awk '{printf $3+$5}')
+    printf ":%.2f%%" "$CPU"
+}
+
+dwm_network () {
+    CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
+    if [ "$CONNAME" = "" ]; then
+        CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
+    fi
+
+    PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
+    PUBLIC=$(curl -s https://ipinfo.io/ip)
+
+    printf "%s" "$SEP1"
+    if [ "$IDENTIFIER" = "unicode" ]; then
+        printf "🌐 %s %s | %s" "$CONNAME" "$PRIVATE" "$PUBLIC"
+    else
+        printf "NET %s %s | %s" "$CONNAME" "$PRIVATE" "$PUBLIC"
+    fi
+    printf "%s\n" "$SEP2"
+}
 
 dwm_net()
 {
       case $BLOCK_BUTTON in
 	3) notify-send "🌐 网络流量模块" "\- 查看实时网络流量
-- ⏬: 下行流量
-- ⏫: 上行流量" ;;
+: 下行流量
+: 上行流量" ;;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
@@ -36,7 +59,7 @@ elif [[ $RX -gt 1048576 ]];then
     RX=$(echo $RX | awk '{print $1/1048576 "MB/s"}')
 else
     # 否则如果接收速率大于1024但小于1048576,则单位为KB/s
-    RX=$(echo $RX | awk '{print $1/1024 "KB/s"}')
+    RX=$(echo $RX | awk '{print $1/102 4 "KB/s"}')
 fi
 
 # 换算单位
@@ -51,14 +74,21 @@ else
     TX=$(echo $TX | awk '{print $1/1024 "KB/s"}')
 fi
 
-printf "↑$TX ↓$RX"
+printf "$TX $RX"
 }
 
-
-dwm_date() 
+dwm_net1()
 {
-    date '+%Y/%m/%d date:%H:%M:%S'
+    mynet
 }
+
+dwm_date () {
+    date "+%H:%M:%S"
+}
+dwm_date0(){
+    date "+%D"
+}
+
 
 dwm_alsa () {
     VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
@@ -89,13 +119,18 @@ dwm_alsa () {
 
 dwm_df()
 {
-      printf "%s%s\n" "$(df -h / | awk ' /[0-9]/ {print $3 "/" $2}')"
+      printf "%s%s%s\n" "$(df -h / | awk ' /[0-9]/ {print $4""$2}')"
+}
+dwm_weather()
+{
+      curl -sf 'wttr.in/FoShan?format=1'
 }
 dwm_free()
 {
-      free --mebi | sed -n '2{p;q}' | awk '{printf ("%2.2fGiB/%2.2fGiB\n", ( $3 / 1024), ($2 / 1024))}'
+    #free --mebi | sed -n '2{p;q}' | awk '{printf ("%2.2fG%2.2fG%2.2fG\n", ( $4 / 1024),($3 / 1024)+($6 / 1024),($2/1024) )}'
+    free --mebi | sed -n '2{p;q}' | awk '{printf ("%2.2fG%2.2fG\n", ( $4 / 1024),($2/1024) )}'
 }
-while xsetroot -name ""net:"$(dwm_net) "free:"$(dwm_free) "hd:"$(dwm_df) "vol:"$(dwm_alsa) $(dwm_date)" 
+while xsetroot -name "$(dwm_cpu) ":"$(dwm_net1) ":"$(dwm_free) ":"$(dwm_df) "墳:"$(dwm_alsa) ":"$(dwm_date0) "ﮮ:"$(dwm_date)" 
 do
     sleep 1 # refresh per 60s
 done &
