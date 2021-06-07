@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Courier New:pixelsize=14:antialias=true:autohint=true";
+static char *font = "SauceCodePro Nerd Font Mono:pixelsize=14:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
