@@ -4,7 +4,7 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=10" };
 static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=10";
 static const char col_gray1[]       = "#222222";
@@ -26,7 +26,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "one", "two", "three" };
+static const char *tags[] = {"si", "one", "twoo", "three" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -45,9 +45,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "Tile",      tile },    /* first entry is default */
-	{ "Flot",      NULL },    /* no layout function means floating behavior */
-	{ "M",      monocle },
+	{ "<_T",      tile },    /* first entry is default */
+	{ "<_F",      NULL },    /* no layout function means floating behavior */
+	{ "m",      monocle },
 };
 
 /* key definitions */
@@ -65,6 +65,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "terminator", NULL };
+static const char *stcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x20", NULL };
 
@@ -86,6 +87,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_t, spawn,          {.v = qt_cmd} },
 
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_n, spawn,          {.v = stcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_y,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -109,9 +111,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_7,                      0)
-	TAGKEYS(                        XK_8,                      1)
-	TAGKEYS(                        XK_9,                      2)
+	TAGKEYS(                        XK_6,                      0)
+	TAGKEYS(                        XK_7,                      1)
+	TAGKEYS(                        XK_8,                      2)
+	TAGKEYS(                        XK_9,                      3)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
