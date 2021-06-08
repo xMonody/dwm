@@ -47,7 +47,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "<_T",      tile },    /* first entry is default */
 	{ "<_F",      NULL },    /* no layout function means floating behavior */
-	{ "m",      monocle },
+	{ "<_M",      monocle },
 };
 
 /* key definitions */
@@ -70,24 +70,27 @@ static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x20", NULL };
 
 
+
+static const char *wps_cmd[]  = { "wps", NULL };
 static const char *wpspdf_cmd[]  = { "wpspdf", NULL };
 static const char *firefox_cmd[]  = { "firefox", NULL };
 static const char *vlc_cmd   []=        {"vlc",NULL};
+static const char *qt_cmd   []=        {"//",NULL};//待添加
 static const char *volup[] = { "amixer", "-qM", "set", "Master", "2%+", "umute", NULL };
 static const char *voldown[] = { "amixer", "-qM", "set", "Master", "2%-", "umute", NULL };
-static const char *qt_cmd   []=        {"/home/one/Install/Qtcreate/Tools/QtCreator/bin/qtcreator",NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_p, spawn,          {.v = wpspdf_cmd} },
+	{ MODKEY|ShiftMask,             XK_w, spawn,          {.v = wps_cmd} },
 	{ MODKEY|ShiftMask,             XK_f, spawn,          {.v = firefox_cmd} },
 	{ MODKEY|ShiftMask,             XK_v, spawn,          {.v = vlc_cmd} },
+	{ MODKEY|ShiftMask,             XK_t, spawn,          {.v = qt_cmd} },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_s, spawn,          {.v = stcmd } },
 	{ MODKEY,                       XK_Right, spawn,          {.v = volup} },
 	{ MODKEY,                       XK_Left, spawn,          {.v = voldown} },
-	{ MODKEY|ShiftMask,             XK_t, spawn,          {.v = qt_cmd} },
 
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_n, spawn,          {.v = stcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_y,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -111,10 +114,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_6,                      0)
-	TAGKEYS(                        XK_7,                      1)
-	TAGKEYS(                        XK_8,                      2)
-	TAGKEYS(                        XK_9,                      3)
+	TAGKEYS(                        XK_7,                      0)
+	TAGKEYS(                        XK_8,                      1)
+	TAGKEYS(                        XK_9,                      2)
+	TAGKEYS(                        XK_6,                      3)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
