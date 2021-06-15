@@ -8,8 +8,9 @@ feh --bg-scale ~/ico/15.jpg
 #~/feh.sh &
 dwm_cpu()
 {
-    CPU=$(sar -u 1 1 | grep Average | awk '{printf $3+$5}')
-    printf ":%.2f%%" "$CPU"
+    #CPU=$(sar -u 1 1 | grep Average | awk '{printf $3+$5}')
+    #printf ":%.2f%%" "$CPU"
+    sar -u 1 1 | sed  -n '4{p;q}' | awk '{printf (":%d", $3+$5)}' 
 }
 
 
@@ -62,7 +63,11 @@ dwm_free()
 {
     free --mebi | sed  -n '2{p;q}' | awk '{printf ("%2.2fG<%2.2fG\n", ( $4 / 1024),($2/1024) )}'
 }
-while xsetroot -name " ":"$(dwm_net)  $(dwm_cpu)  ":"$(dwm_free)  ":"$(dwm_df)  "墳:"$(dwm_alsa)  "ﮮ:"$(dwm_date)" 
+dwm_xxx()
+{
+    sarr
+}
+while xsetroot -name " ":"$(dwm_net)  $(dwm_cpu)"%"  ":"$(dwm_free)  ":"$(dwm_df)  "墳:"$(dwm_alsa)  "ﮮ:"$(dwm_date)" 
 do
     sleep 1 # refresh per 1s
 done &
