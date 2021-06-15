@@ -67,7 +67,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "terminator", NULL };
 static const char *stcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x20", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "95x25", NULL };
 
 
 
