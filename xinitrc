@@ -1,7 +1,8 @@
 #!/bin/sh
 
 compton &
-#picom -CGb &
+#picom -CGb &  
+#sudo apt-get install libx11-dev xorg xorg-dev
 #sudo apt-get install compton feh sysstat xsetroot alsa-utils dmenu
 # 
 feh --bg-scale ~/ico/15.jpg
