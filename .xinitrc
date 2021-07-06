@@ -5,7 +5,7 @@ compton &
 #sudo apt-get install libx11-dev xorg xorg-dev
 #sudo apt-get install compton feh sysstat xsetroot alsa-utils dmenu
 # 
-feh --bg-scale ~/.image/15.jpg
+feh --bg-scale ~/.image/7.jpg
 #~/feh.sh &
 dwm_cpu()
 {
