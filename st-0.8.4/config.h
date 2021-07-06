@@ -5,7 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "SauceCodePro Nerd Font Mono:pixelsize=13:antialias=true:autohint=true";
+//static char *font = "SauceCodePro Nerd Font Mono:pixelsize=13:antialias=true:autohint=true";
+static char *font = "Courier New:pixelsize=15:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -123,7 +124,8 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"black",
+	"#000000",
+    //"#1F1F1F"
 };
 
 
