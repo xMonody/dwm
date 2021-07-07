@@ -82,17 +82,17 @@ static const char *voldown[] = { "amixer", "-qM", "set", "Master", "2%-", "umute
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_p, spawn,          {.v = wpspdf_cmd} },
-	{ MODKEY|ShiftMask,             XK_w, spawn,          {.v = wps_cmd} },
-	{ MODKEY|ShiftMask,             XK_f, spawn,          {.v = firefox_cmd} },
-	{ MODKEY|ShiftMask,             XK_v, spawn,          {.v = vlc_cmd} },
-	{ MODKEY|ShiftMask,             XK_t, spawn,          {.v = qt_cmd} },
+	{ MODKEY|ShiftMask,             XK_p, spawn,               {.v = wpspdf_cmd} },
+	{ MODKEY|ShiftMask,             XK_w, spawn,               {.v = wps_cmd} },
+	{ MODKEY|ShiftMask,             XK_f, spawn,               {.v = firefox_cmd} },
+	{ MODKEY|ShiftMask,             XK_v, spawn,               {.v = vlc_cmd} },
+	{ MODKEY|ShiftMask,             XK_t, spawn,               {.v = qt_cmd} },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_Right, spawn,          {.v = volup} },
-	{ MODKEY,                       XK_Left, spawn,          {.v = voldown} },
+	{ MODKEY,                       XK_Right, spawn,           {.v = volup} },
+	{ MODKEY,                       XK_Left, spawn,            {.v = voldown} },
 
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_y,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_y,  togglescratch,      {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_s,      togglebar,      {0} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
