@@ -20,7 +20,7 @@ dwm_net()
     #sar -n DEV 1 1 | sed  -n '4{p;q}' | awk '{printf ("%3.1fk %3.1fk\n", $3,$4)}'
     cat /proc/net/dev | sed  -n '3{p;q}' | awk '{printf ("%2.2fk %2.2fk\n", ( $3 / 1024),($11/1024) )}'
 }
-
+# ...
 dwm_date () {
  #    date | awk '{printf ("%s%s %s %s",$2,$3,$4,$5)}'
    date +%r
