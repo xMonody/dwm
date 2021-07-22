@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=10" };
-static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=10";
+static const char *fonts[]          = { "Courier New:size=10" };
+static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=9";
 //static const char *fonts[]          = { "Sourier New:size=11" };
 //static const char dmenufont[]       = "Sourier New:size=11";
 static const char col_gray1[]       = "#222222";
@@ -28,7 +28,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = {"si", "one", "twoo", "three" };
+static const char *tags[] = {"7", "8", "9", "6" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -68,7 +68,7 @@ static char dmenumon[2] = "0"; /* comp:onent of dmenucmd, manipulated in spawn()
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "95x25", NULL };
+static const char *scratchpadcmd[] = { "st1", "-t", scratchpadname, "-g", "95x25", NULL };
 
 
 
@@ -76,7 +76,7 @@ static const char *wps_cmd[]  = { "wps", NULL };
 static const char *wpspdf_cmd[]  = { "wpspdf", NULL };
 static const char *firefox_cmd[]  = { "firefox", NULL };
 static const char *vlc_cmd   []=        {"vlc",NULL};
-static const char *qt_cmd   []=        {"//",NULL};//待添加
+static const char *qt_cmd   []=        {"qtcreator",NULL};//待添加
 static const char *volup[] = { "amixer", "-qM", "set", "Master", "2%+", "umute", NULL };
 static const char *voldown[] = { "amixer", "-qM", "set", "Master", "2%-", "umute", NULL };
 
@@ -91,14 +91,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Right, spawn,           {.v = volup} },
 	{ MODKEY,                       XK_Left, spawn,            {.v = voldown} },
 
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	//{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_y,  togglescratch,      {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_s,      togglebar,      {0} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_1,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_1,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
