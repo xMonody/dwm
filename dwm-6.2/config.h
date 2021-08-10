@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Courier New:size=10" };
+static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=9" };
 static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=9";
 //static const char *fonts[]          = { "Sourier New:size=11" };
 //static const char dmenufont[]       = "Sourier New:size=11";
@@ -68,11 +68,12 @@ static char dmenumon[2] = "0"; /* comp:onent of dmenucmd, manipulated in spawn()
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st1", "-t", scratchpadname, "-g", "95x25", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "95x25", NULL };
 
 
 
 static const char *wps_cmd[]  = { "wps", NULL };
+static const char *st1_cmd[]  = { "st1", NULL };
 static const char *wpspdf_cmd[]  = { "wpspdf", NULL };
 static const char *firefox_cmd[]  = { "firefox", NULL };
 static const char *vlc_cmd   []=        {"vlc",NULL};
@@ -83,6 +84,7 @@ static const char *voldown[] = { "amixer", "-qM", "set", "Master", "2%-", "umute
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_p, spawn,               {.v = wpspdf_cmd} },
+	{ MODKEY|ShiftMask,             XK_s, spawn,               {.v = st1_cmd} },
 	{ MODKEY|ShiftMask,             XK_w, spawn,               {.v = wps_cmd} },
 	{ MODKEY|ShiftMask,             XK_f, spawn,               {.v = firefox_cmd} },
 	{ MODKEY|ShiftMask,             XK_v, spawn,               {.v = vlc_cmd} },

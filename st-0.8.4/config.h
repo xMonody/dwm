@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-//static char *font = "SauceCodePro Nerd Font Mono:pixelsize=13:antialias=true:autohint=true";
-static char *font = "Courier New:pixelsize=15:antialias=true:autohint=true";
+static char *font = "SauceCodePro Nerd Font Mono:pixelsize=13:antialias=true:autohint=true";
+//static char *font = "SauceCodePro Nerd Font Mono=15:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -125,7 +125,7 @@ static const char *colorname[] = {
 	"#cccccc",
 	"#555555",
     //"#000000"
-    "#002B36",
+    "#000000",
     //"#1F1F1F" #002B36
 };
 
